@@ -1,25 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import { Card } from './components/Card/Card';
+
+import { useState, useEffect, useReducer } from 'react';
+import style from './App.module.scss';
+
+const initialState = {
+    favorites: []
+}
+
+const favoriteReducer = (state, action) => {
+    switch (action.type) {
+        case 'ADD_TO_FAVORITE':
+            return {
+                ...state,
+                favorites: [...state.favorites, action.payload]
+            }
+        default:
+            return state;
+    }
+
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [ data, setData ] = useState([]);
+    const [ favorites, dispatch ] = useReducer(favoriteReducer, initialState);
+
+    useEffect(() => {
+        fetch('https://rickandmortyapi.com/api/character')
+        .then(res => res.json())
+        .then(resJson => setData(resJson.results))
+    }, []);
+
+    const handleClick = favorite => {
+        dispatch({ type: 'ADD_TO_FAVORITE', payload: favorite})
+    }
+
+    return (
+        <div className={style.app}>
+            <h1>
+                RICK AND MORTY
+            </h1>
+            <div className={style.favorites}>
+                <h2>List of favorites</h2>
+                {favorites.favorites.map(favorite => (
+                    <li key={favorite.id}>
+                        {favorite.name}
+                    </li>
+                ))}
+            </div>
+            <div className={style.cards_container}>
+                {data?.map(item => 
+                    <Card
+                        key={item.id}
+                        data={item}
+                        onAddFavorite={() => handleClick(item)}
+                    />
+                )}
+            </div>
+        </div>
+    );
 }
 
 export default App;
