@@ -1,4 +1,5 @@
 import { Card } from './components/Card/Card';
+import { Header } from './components/Header/Header';
 
 import { useState, useEffect, useReducer } from 'react';
 import style from './App.module.scss';
@@ -17,7 +18,6 @@ const favoriteReducer = (state, action) => {
         default:
             return state;
     }
-
 }
 
 function App() {
@@ -36,9 +36,7 @@ function App() {
 
     return (
         <div className={style.app}>
-            <h1>
-                RICK AND MORTY
-            </h1>
+            <Header />
             <div className={style.favorites}>
                 <h2>List of favorites</h2>
                 {favorites.favorites.map(favorite => (
