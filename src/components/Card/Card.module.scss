@@ -44,7 +44,7 @@
         margin: auto;
         letter-spacing: 3px;
         transition: all .4s ease;
-        transform: translateX(-180%);
+        transform: scale(0);
         height: 15%;
         width: 40%;
     }
@@ -54,7 +54,7 @@
             transform: scale(150%);
         }
         .button_more {
-            transform: translate(0);
+            transform: scale(100%);
         }
     }
     img {
@@ -73,7 +73,7 @@
             background-color: transparent;
             height: 40px;
             width: 40px;
-            z-index: 9999;
+            z-index: 1;
             svg {
                 fill: rgb(158, 51, 25);
                 transition: all .3s ease;
