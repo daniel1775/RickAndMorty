@@ -9,7 +9,7 @@
     position: relative;
     transition: all .4s ease;
     overflow: hidden;
-    width: 23%;
+    width: 25%;
     &::before {
         content: '';
         background-color: rgb(145, 212, 57);
@@ -17,6 +17,8 @@
         position: absolute;
         top: 0;
         left: 0;
+        pointer-events: none;
+        opacity: .6;
         transform: scale(0);
         transform-origin: center;
         transition: transform .4s ease;
@@ -24,10 +26,35 @@
         height: 100%;
         width: 100%;
     }
+    .button_more {
+        border: 2px solid #fff;
+        border-radius: 4px;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-size: bold;
+        color: #fff;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        letter-spacing: 3px;
+        transition: all .4s ease;
+        transform: translateX(-180%);
+        height: 15%;
+        width: 40%;
+    }
     &:hover {
         box-shadow: 0 0 35px rgb(145, 212, 57);
         &::before {
             transform: scale(150%);
+        }
+        .button_more {
+            transform: translate(0);
         }
     }
     img {
@@ -38,7 +65,57 @@
         text-transform: uppercase;
         letter-spacing: 4px;
     }
-    button {
-        display: none;
+    .button_container {
+        display: flex;
+        justify-content: flex-end;
+        .button {
+            border: none;
+            background-color: transparent;
+            height: 40px;
+            width: 40px;
+            z-index: 9999;
+            svg {
+                fill: rgb(158, 51, 25);
+                transition: all .3s ease;
+                height: 100%;
+                width: 100%;
+                &:first-child {
+                    display: block;
+                }
+                &:nth-child(2) {
+                    display: none;
+                }
+            }
+        }
+        .button_active {
+            svg {
+                &:first-child {
+                    display: none;
+                }
+                &:nth-child(2) {
+                    display: block;
+                }
+            }
+        }
     }
+}
+
+.card_expand {
+    background-color: rgb(41, 88, 150);
+    /* position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 25%;
+    &::after {
+        content: '';
+        background-color: aquamarine;
+        background: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vW;
+    } */
 }
