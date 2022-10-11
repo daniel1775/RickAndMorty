@@ -60,6 +60,7 @@ function App() {
                     <Card
                         key={item.id}
                         data={item}
+                        handleModalCard={false}
                         onIdSelected={handleIdCard}
                         onAddFavorite={() => handleClick(item)}
                     />
@@ -69,6 +70,8 @@ function App() {
                 <Modal>
                     <Card 
                         data={data.find(item => item.id == idExpandCard)}
+                        expandCard={true}
+                        onIdSelected={handleIdCard}
                     />
                 </Modal>
             }

@@ -10,22 +10,6 @@
     transition: all .4s ease;
     overflow: hidden;
     width: 25%;
-    &::before {
-        content: '';
-        background-color: rgb(145, 212, 57);
-        opacity: .5;
-        position: absolute;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        opacity: .6;
-        transform: scale(0);
-        transform-origin: center;
-        transition: transform .4s ease;
-        border-radius: 50%;
-        height: 100%;
-        width: 100%;
-    }
     .button_more {
         border: 2px solid #fff;
         border-radius: 4px;
@@ -47,15 +31,6 @@
         transform: scale(0);
         height: 15%;
         width: 40%;
-    }
-    &:hover {
-        box-shadow: 0 0 35px rgb(145, 212, 57);
-        &::before {
-            transform: scale(150%);
-        }
-        .button_more {
-            transform: scale(100%);
-        }
     }
     img {
         border: 1px solid black;
@@ -98,8 +73,31 @@
             }
         }
     }
-}
-
-.card_expand {
-    
+    &_static {
+        &::before {
+            content: '';
+            background-color: rgb(145, 212, 57);
+            opacity: .5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            opacity: .6;
+            transform: scale(0);
+            transform-origin: center;
+            transition: transform .4s ease;
+            border-radius: 50%;
+            height: 100%;
+            width: 100%;
+        }
+        &:hover {
+            box-shadow: 0 0 35px rgb(145, 212, 57);
+            &::before {
+                transform: scale(150%);
+            }
+            .button_more {
+                transform: scale(100%);
+            }
+        }
+    }
 }
