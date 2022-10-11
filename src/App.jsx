@@ -1,5 +1,6 @@
 import { Card } from './components/Card/Card';
 import { Header } from './components/Header/Header';
+import { Modal } from './components/Modal/Modal';
 
 import { useState, useEffect, useReducer } from 'react';
 import style from './App.module.scss';
@@ -20,9 +21,14 @@ const favoriteReducer = (state, action) => {
     }
 }
 
+const handlePortal = (event) => {
+    console.log('event: ', event);
+}
+
 function App() {
     const [ data, setData ] = useState([]);
     const [ favorites, dispatch ] = useReducer(favoriteReducer, initialState);
+    const [ idExpandCard, setIdExpandCard ] = useState(0);
 
     useEffect(() => {
         fetch('https://rickandmortyapi.com/api/character')
@@ -32,6 +38,10 @@ function App() {
 
     const handleClick = favorite => {
         dispatch({ type: 'ADD_TO_FAVORITE', payload: favorite})
+    }
+
+    const handleIdCard = (id) => {
+        setIdExpandCard(id);
     }
 
     return (
@@ -50,10 +60,18 @@ function App() {
                     <Card
                         key={item.id}
                         data={item}
+                        onIdSelected={handleIdCard}
                         onAddFavorite={() => handleClick(item)}
                     />
                 )}
             </div>
+            {idExpandCard != 0 && 
+                <Modal>
+                    <Card 
+                        data={data.find(item => item.id == idExpandCard)}
+                    />
+                </Modal>
+            }
         </div>
     );
 }

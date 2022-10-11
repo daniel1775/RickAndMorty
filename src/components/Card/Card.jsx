@@ -3,21 +3,20 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { useState } from 'react';
 
 function Card(props) {
-    const { data, onAddFavorite } = props;
+    const { data, onAddFavorite, onIdSelected } = props;
     const [ buttonFavourite, setButtonFavourite ] = useState(false);
-    const [ buttonMore, setButtonMore ] = useState(false);
     
     const onFavouriteClick = () => {
         onAddFavorite();
         setButtonFavourite(!buttonFavourite);
     }
 
-    const onButtonMoreClick = () => {
-        setButtonMore(!buttonMore);
+    const onHandleExpandCard = () => {
+        onIdSelected(data.id);
     }
 
     return(
-        <div className={`${style.card} ${buttonMore && style.card_expand}`}>
+        <div className={`${style.card}`}>
             <img src={data.image} alt={data.name} />
             <h2>{data.name}</h2>
             <div className={style.button_container}>
@@ -26,7 +25,7 @@ function Card(props) {
                     <AiFillHeart />
                 </button>
             </div>
-            <button onClick={onButtonMoreClick} className={`${style.button_more}`}>
+            <button onClick={onHandleExpandCard} className={`${style.button_more}`}>
                 VIEW MORE
             </button>
         </div>
