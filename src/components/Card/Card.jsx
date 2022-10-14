@@ -25,19 +25,25 @@ function Card(props) {
 
     return(
         <>
-            {expandCard && <div className={style.portal} />}
-            <div className={`${style.card} ${!expandCard ? style.card_static : style.card_expand}`} ref={cardRef}>
-                <img src={data.image} alt={data.name} />
-                <h2>{data.name}</h2>
-                <div className={style.button_container}>
-                    <button className={`${style.button} ${buttonFavourite && style.button_active}`} onClick={onFavouriteClick}>
-                        <AiOutlineHeart />
-                        <AiFillHeart />
+            {expandCard && 
+            <>
+                <div className={style.portal_top} />
+                <div className={style.portal_bottom} />
+            </> }
+            <div className={`${style.card_container} ${expandCard && style.card_container_expand}`}>
+                <div className={`${style.card} ${!expandCard ? style.card_static : style.card_expand}`} ref={cardRef}>
+                    <img src={data.image} alt={data.name} />
+                    <h2>{data.name}</h2>
+                    <div className={style.button_container}>
+                        <button className={`${style.button} ${buttonFavourite && style.button_active}`} onClick={onFavouriteClick}>
+                            <AiOutlineHeart />
+                            <AiFillHeart />
+                        </button>
+                    </div>
+                    <button onClick={onHandleExpandCard} className={`${style.button_more}`}>
+                        VIEW MORE
                     </button>
                 </div>
-                <button onClick={onHandleExpandCard} className={`${style.button_more}`}>
-                    VIEW MORE
-                </button>
             </div>
         </>
     );

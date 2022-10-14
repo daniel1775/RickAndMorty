@@ -1,128 +1,136 @@
-.card {
-    box-sizing: border-box;
-    background-color: #b9e4ed;
-    border: 1px solid rgb(55, 54, 54);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    margin-bottom: 40px;
-    position: relative;
-    transition: all .4s ease;
-    overflow: hidden;
+.card_container {
     width: 28%;
-    .button_more {
-        border: 2px solid #fff;
-        border-radius: 4px;
-        background-color: transparent;
-        display: flex;
-        align-items: center;
-        font-size: 24px;
-        font-size: bold;
-        color: #fff;
-        text-align: center;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        letter-spacing: 3px;
-        transition: all .4s ease;
-        transform: scale(0);
-        height: 15%;
-        width: 40%;
-    }
-    img {
-        border: 1px solid black;
+    .card {
+        box-sizing: border-box;
+        background-color: #b9e4ed;
+        border: 1px solid rgb(55, 54, 54);
         border-radius: 8px;
-    }
-    h2 {
-        text-transform: uppercase;
-        letter-spacing: 4px;
-    }
-    .button_container {
         display: flex;
-        justify-content: flex-end;
-        .button {
-            border: none;
-            background-color: transparent;
-            height: 40px;
-            width: 40px;
-            z-index: 1;
-            svg {
-                fill: rgb(158, 51, 25);
-                transition: all .3s ease;
-                height: 100%;
-                width: 100%;
-                &:first-child {
-                    display: block;
-                }
-                &:nth-child(2) {
-                    display: none;
-                }
-            }
-        }
-        .button_active {
-            svg {
-                &:first-child {
-                    display: none;
-                }
-                &:nth-child(2) {
-                    display: block;
-                }
-            }
-        }
-    }
-}
-.card_static {
-    &::before {
-        content: '';
-        background-color: rgb(145, 212, 57);
-        opacity: .5;
-        position: absolute;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        opacity: .6;
-        transform: scale(0);
-        transform-origin: center;
-        transition: transform .4s ease;
-        border-radius: 50%;
-        height: 100%;
+        flex-direction: column;
+        padding: 15px;
+        margin-bottom: 40px;
+        position: relative;
+        transition: all .4s ease;
         width: 100%;
-    }
-    &:hover {
-        box-shadow: 0 0 35px rgb(145, 212, 57);
-        &::before {
-            transform: scale(150%);
-        }
         .button_more {
-            transform: scale(100%);
+            border: 2px solid #fff;
+            border-radius: 4px;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-size: bold;
+            color: #fff;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            letter-spacing: 3px;
+            transition: all .4s ease;
+            transform: scale(0);
+            height: 15%;
+            width: 40%;
+        }
+        img {
+            border: 1px solid black;
+            border-radius: 8px;
+        }
+        h2 {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+        .button_container {
+            display: flex;
+            justify-content: flex-end;
+            .button {
+                border: none;
+                background-color: transparent;
+                height: 40px;
+                width: 40px;
+                z-index: 1;
+                svg {
+                    fill: rgb(158, 51, 25);
+                    transition: all .3s ease;
+                    height: 100%;
+                    width: 100%;
+                    &:first-child {
+                        display: block;
+                    }
+                    &:nth-child(2) {
+                        display: none;
+                    }
+                }
+            }
+            .button_active {
+                svg {
+                    &:first-child {
+                        display: none;
+                    }
+                    &:nth-child(2) {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    .card_static {
+        overflow: hidden;
+        &::before {
+            content: '';
+            background-color: rgb(145, 212, 57);
+            opacity: .5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            opacity: .6;
+            transform: scale(0);
+            transform-origin: center;
+            transition: transform .4s ease;
+            border-radius: 50%;
+            height: 100%;
+            width: 100%;
+        }
+        &:hover {
+            box-shadow: 0 0 35px rgb(145, 212, 57);
+            &::before {
+                transform: scale(150%);
+            }
+            .button_more {
+                transform: scale(100%);
+            }
         }
     }
 }
-.card_expand {
-    transform: translateY(-100%);
-    transition: all .7s ease;
+
+.card_container_expand {
+    overflow-y: hidden;
+    transform: translateY(-12%);
+    .card_expand {
+        transform: translateY(-120%);
+        transition: all 1.5s linear;
+    }
+    .open_card {
+        transform: translateY(0);
+    }
 }
-.open_card {
-    transform: translateY(0);
-}
+
 .portal {
-    position: relative;
-    height: 14%;
-    width: 28%;
-    &::after {
-        content: '';
-        background-image: url('../../assets/images/portal.png');
+    &_top {
+        background-image: url('../../assets/images/portal-top.png');
         background-size: 100% 100%;
-        background-repeat: no-repeat;
-        background-position-y: -65%;
-        position: absolute;
-        top: 30%;
-        left: -15%;
-        height: 150%;
-        width: 130%;
+        height: 7%;
+        width: 35%;
+        z-index: 5;
+    }
+    &_bottom {
+        background-image: url('../../assets/images/portal-bottom.png');
+        background-size: 100% 100%;
+        height: 7%;
+        width: 35%;
+        z-index: -1;
     }
 }
