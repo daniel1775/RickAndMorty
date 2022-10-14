@@ -1,4 +1,5 @@
 .card {
+    box-sizing: border-box;
     background-color: #b9e4ed;
     border: 1px solid rgb(55, 54, 54);
     border-radius: 8px;
@@ -9,7 +10,7 @@
     position: relative;
     transition: all .4s ease;
     overflow: hidden;
-    width: 25%;
+    width: 28%;
     .button_more {
         border: 2px solid #fff;
         border-radius: 4px;
@@ -102,27 +103,26 @@
     }
 }
 .card_expand {
-    overflow: hidden;
-    transform: scaleY(0);
-    transition: all .6s ease-in-out;
-    transform-origin: top;
-    /* &::after {
-        content: '';
-        position: absolute;
-        background-color: rgba(43, 43, 43, 0.714);
-        transform: scaleY(100%);
-        transition: transform 2s linear;
-        transform-origin: bottom;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 10;
-    } */
+    transform: translateY(-100%);
+    transition: all .7s ease;
 }
 .open_card {
-    transform: scaleY(100%);
-    /* &::after {
-        transform: scaleY(0);
-    } */
+    transform: translateY(0);
+}
+.portal {
+    position: relative;
+    height: 14%;
+    width: 28%;
+    &::after {
+        content: '';
+        background-image: url('../../assets/images/portal.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position-y: -65%;
+        position: absolute;
+        top: 30%;
+        left: -15%;
+        height: 150%;
+        width: 130%;
+    }
 }
