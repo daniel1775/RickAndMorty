@@ -34,6 +34,7 @@ function App() {
         fetch('https://rickandmortyapi.com/api/character')
         .then(res => res.json())
         .then(resJson => setData(resJson.results))
+        console.log("effect inside")
     }, []);
 
     const handleClick = favorite => {
@@ -66,7 +67,7 @@ function App() {
                     />
                 )}
             </div>
-            {idExpandCard != 0 && 
+            {idExpandCard !== 0 && 
                 <Modal>
                     <Card 
                         data={data.find(item => item.id == idExpandCard)}
